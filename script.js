@@ -43,8 +43,10 @@ main = function() {
         savedResult.textContent = "";
         result.textContent = "";
         editMode = true;
+      } else if (op == '<') {
+        currNum = currNum.slice(0,-1);
+        result.textContent = currNum;
       } else if (ops.length < 1) {
-        console.log(op);
         ops.push(op);
         nums.push(parseFloat(currNum));
         savedResult.textContent = nums[0];
@@ -54,7 +56,6 @@ main = function() {
         editMode = false;
         if (currNum != "") {
           nums.push(parseFloat(currNum));
-          console.log("RUNNING!");
           a = nums.pop();
           b = nums.pop()
           if (a == 0 && ops[0] == '÷') {
