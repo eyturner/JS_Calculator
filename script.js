@@ -43,10 +43,8 @@ main = function() {
         savedResult.textContent = "";
         result.textContent = "";
         editMode = true;
-      } else if (op == '<') {
-        currNum = currNum.slice(0,-1);
-        result.textContent = currNum;
       } else if (ops.length < 1) {
+        console.log(op);
         ops.push(op);
         nums.push(parseFloat(currNum));
         savedResult.textContent = nums[0];
@@ -54,24 +52,17 @@ main = function() {
         editMode = true;
       } else {
         editMode = false;
-        if (currNum != "") {
-          nums.push(parseFloat(currNum));
-          a = nums.pop();
-          b = nums.pop()
-          if (a == 0 && ops[0] == '÷') {
-            result.textContent = "Nice try loser"
-          } else {
-            solution = operate(a, b, ops.pop());
-            if (op != '=') {
-              ops.push(op);
-            }
-            currNum = solution
-            result.textContent = solution;
-          }
-        } else {
-          editMode = true;
+        nums.push(parseFloat(currNum));
+        console.log("RUNNING!");
+        solution = operate(nums.pop(), nums.pop(), ops.pop());
+        if (op != '=') {
+          ops.push(op);
         }
+        currNum = solution
+        result.textContent = solution;
       }
+      console.log("Nums is now: ", nums);
+      console.log("Ops is: ", ops);
     });
   });
 
